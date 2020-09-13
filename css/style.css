@@ -38,6 +38,10 @@ input[type=number] {
   display: flex;
 }
 
+button {
+  margin:  0 0.5rem;
+}
+
 /* Seccion ASIDE */
 aside {
   margin: 0 0.2rem;

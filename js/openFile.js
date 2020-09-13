@@ -1,6 +1,10 @@
 let data;
 let tablaResult;
 
+const separador = document.getElementById("separador")
+separador.addEventListener("change", () => {
+
+})
 
 document.getElementById('inputfile').addEventListener('change', function () {
   let fr = new FileReader();
@@ -29,13 +33,15 @@ function getTabla() {
   const colorPick04 = document.getElementById("picColor04");
   const keyWord04 = document.getElementById("keyWord04");
 
+  // Para separar en columnas
 
 
   tablaID.innerHTML = "";
   tablaResult = []
 
+
   const dataTabla = data;
-  const useData = dataTabla.split(";");
+  const useData = dataTabla.split(separador.value);
 
   do {
     let z;
