@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrar Tabla</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <section class="header">
+      <p>Visualizador de tablas</p>
+      <p>Seleccione un archivo .txt o .csv y pulse 'Mostrar tabla'</p>
+
+      <div class="chooseFile">
+        <input type="file" name="inputfile" id="inputfile">
+
+        <label for="columns">¿Columnas?</label>
+        <input type="number" name="columns" id="columns" value="4">
+
+        <button onclick="getTabla()">Mostrar Tabla</button>
+      </div>
+    </section>
+
+    <div class="main">
+
+      <aside>
+        <h3>Palabras claves</h3>
+        <div class="caseSensitive">
+          <p>Distinguir mayúsculas</p>
+          <input type="checkbox" name="caseSensitive" id="caseSensitive">
+        </div>
+        <div class="colorPicker">
+          <input type="text" name="keyWord01" id="keyWord01">
+          <input type="color" name="picColor01" id="picColor01" value="#ffffff">
+        </div>
+
+        <div class="colorPicker">
+          <input type="text" name="keyWord02" id="keyWord02">
+          <input type="color" name="picColor02" id="picColor02" value="#ffffff">
+        </div>
+
+        <div class="colorPicker">
+          <input type="text" name="keyWord03" id="keyWord03">
+          <input type="color" name="picColor03" id="picColor03" value="#ffffff">
+        </div>
+
+        <div class="colorPicker">
+          <input type="text" name="keyWord04" id="keyWord04">
+          <input type="color" name="picColor04" id="picColor04" value="#ffffff">
+        </div>
+
+      </aside>
+
+      <section class="showtable">
+        <table>
+          <tbody class="tbody" id="createTable">
+            <!-- Aca se irán creando las celdas que correspondan -->
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="./js/openFile.js"></script>
+</body>
+
+</html>
