@@ -1,8 +1,10 @@
 let data;
 let tablaResult;
+let separadorPicked = ";"
 
 const separador = document.getElementById("separador")
 separador.addEventListener("change", () => {
+  separadorPicked = separador.value
 
 })
 
@@ -41,7 +43,7 @@ function getTabla() {
 
 
   const dataTabla = data;
-  const useData = dataTabla.split(separador.value);
+  const useData = dataTabla.split(separadorPicked);
 
   do {
     let z;
