@@ -12,13 +12,13 @@
   <div class="container">
 
     <section class="header">
-      <p>Visualizador de tablas</p>
+      <h3>Visualizador de tablas</h3>
       <p>Seleccione un archivo .txt o .csv y pulse 'Mostrar tabla'</p>
 
       <div class="chooseFile">
         <input type="file" name="inputfile" id="inputfile">
 
-        <label for="columns">¿Columnas?</label>
+        <label for="columns">Columnas:</label>
         <input type="number" name="columns" id="columns" value="4">
 
         <label for="separador">Separador:</label>
@@ -27,8 +27,12 @@
           <option value=",">,</option>
         </select>
 
-        <button onclick="getTabla()">Mostrar Tabla</button>
+        <button onclick="getTabla()">Crear tabla</button>
+
       </div>
+
+      <p class="adviseTxt">Si la tabla no se visualiza correctamente personalice los valores de Columnas y Separador y vuelva a crear la tabla</p>
+
     </section>
 
     <div class="main">
@@ -64,7 +68,7 @@
       <section class="showtable">
         <table>
           <tbody class="tbody" id="createTable">
-            <!-- Aca se irán creando las celdas que correspondan -->
+            <!-- Aca se creará a la tabla -->
           </tbody>
         </table>
       </section>
