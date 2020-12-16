@@ -74,10 +74,10 @@ button {
 }
 
 /* Seccion ASIDE */
-aside {
-  margin: 0 0.2rem;
+.showAside {
+  margin: 0 0.5rem;
   padding: 0.2rem;
-  border-right: 2px solid rgb(197, 227, 253);
+  background: #ffffff;
 }
 aside input[type="text"] {
   width: 90%;
@@ -108,9 +108,33 @@ input[type="checkbox"]{
 }
 
 /* Seccion donde se muetra la tabla */
+.showTable{
+  display: block;
+  height: 400px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+/*Aspecto del scroll*/
+.showTable::-webkit-scrollbar {
+  width: 8px; 
+  height: 8px;
+}
+.showTable::-webkit-scrollbar-thumb {
+  background: rgb(155, 176, 189);
+  border-radius: 4px;
+}
+.showTable::-webkit-scrollbar-thumb:hover {
+  background: rgb(143, 162, 173);
+  box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.2);
+}
+.showTable::-webkit-scrollbar-thumb:active {
+  background-color:rgb(111, 126, 134);
+}
+
+
 table {
   text-align: center;
-  margin: 1rem auto;
+  margin: 1rem 0.2rem;
   border-collapse: collapse;
 }
 td {
