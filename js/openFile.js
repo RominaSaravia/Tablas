@@ -1,10 +1,10 @@
 let data;
 let tablaResult;
-let separadorPicked = ";"
+let separadorPicked = ";";
 
 const separador = document.getElementById("separador")
 separador.addEventListener("change", () => {
-  separadorPicked = separador.value
+  separadorPicked = separador.value;
 
 })
 
@@ -21,7 +21,8 @@ document.getElementById('inputfile').addEventListener('change', function () {
 
 function getTabla() {
   const colCount = document.getElementById("columns");
-  const tablaID = document.getElementById("createTable");
+  const tablaBody = document.getElementById("createTableBody");
+  const tablaHead = document.getElementById("createTableHead");
 
   //Para colorear palabras claves
   const caseSensitive = document.getElementById("caseSensitive");
@@ -35,15 +36,14 @@ function getTabla() {
   const colorPick04 = document.getElementById("picColor04");
   const keyWord04 = document.getElementById("keyWord04");
 
-  // Para separar en columnas
-
-
-  tablaID.innerHTML = "";
-  tablaResult = []
-
-
+  
+  tablaHead.innerHTML = "";
+  tablaBody.innerHTML = "";
+  
+  
   const dataTabla = data;
   const useData = dataTabla.split(separadorPicked);
+  tablaResult = [];
 
   do {
     let z;
@@ -60,52 +60,71 @@ function getTabla() {
 
   //Dibujar tabla
   for (y = 0; y < tablaResult.length; y++) {
-    const newRow = document.createElement("tr")
-    for (x = 0; x < colCount.value; x++) {
 
-      if (tablaResult[y][x] != undefined) {
-        //console.log((tablaResult[y][x]).replace(/[^ -~]+/g, ""));
+    if (y === 0) {
+      const newRow = document.createElement("tr")
+      for (x = 0; x < colCount.value; x++) {
 
-        const newCol = document.createElement("td")
-        newCol.textContent += ((tablaResult[y][x]).replace(/[^ -~]+/g, ""));
-        //console.log(newCol.textContent.toUpperCase())
-
-        //COLOREAR
-        if (caseSensitive.checked) {
-
-          if (newCol.textContent === (`${keyWord01.value}`) && keyWord01.value) {
-            newCol.style.backgroundColor = `${colorPick01.value}`;
-          }
-          if (newCol.textContent === (`${keyWord02.value}`) && keyWord02.value) {
-            newCol.style.backgroundColor = `${colorPick02.value}`;
-          }
-          if (newCol.textContent === (`${keyWord03.value}`) && keyWord03.value) {
-            newCol.style.backgroundColor = `${colorPick03.value}`;
-          }
-          if (newCol.textContent === (`${keyWord04.value}`) && keyWord04.value) {
-            newCol.style.backgroundColor = `${colorPick04.value}`;
-          }
-
-        } else {
-
-          if (newCol.textContent.toUpperCase() === keyWord01.value.toUpperCase() && keyWord01.value) {
-            newCol.style.backgroundColor = `${colorPick01.value}`;
-          }
-          if (newCol.textContent.toUpperCase() === keyWord02.value.toUpperCase() && keyWord02.value) {
-            newCol.style.backgroundColor = `${colorPick02.value}`;
-          }
-          if (newCol.textContent.toUpperCase() === keyWord03.value.toUpperCase() && keyWord03.value) {
-            newCol.style.backgroundColor = `${colorPick03.value}`;
-          }
-          if (newCol.textContent.toUpperCase() === keyWord04.value.toUpperCase() && keyWord04.value) {
-            newCol.style.backgroundColor = `${colorPick04.value}`;
-          }
+        if (tablaResult[y][x] != undefined) {
+          const newCol = document.createElement("th")
+          newCol.textContent += ((tablaResult[y][x]).replace(/[^ -~]+/g, ""));
+          
+          newRow.appendChild(newCol);
         }
-        newRow.appendChild(newCol);
+        
+        tablaHead.appendChild(newRow);
       }
 
-      tablaID.appendChild(newRow);
+
+
+    } else {
+      const newRow = document.createElement("tr")
+
+      for (x = 0; x < colCount.value; x++) {
+  
+        if (tablaResult[y][x] != undefined) {
+  
+          const newCol = document.createElement("td")
+          newCol.textContent += ((tablaResult[y][x]).replace(/[^ -~]+/g, ""));
+  
+          //COLOREAR
+          if (caseSensitive.checked) {
+  
+            if (newCol.textContent === (`${keyWord01.value}`) && keyWord01.value) {
+              newCol.style.backgroundColor = `${colorPick01.value}`;
+            }
+            if (newCol.textContent === (`${keyWord02.value}`) && keyWord02.value) {
+              newCol.style.backgroundColor = `${colorPick02.value}`;
+            }
+            if (newCol.textContent === (`${keyWord03.value}`) && keyWord03.value) {
+              newCol.style.backgroundColor = `${colorPick03.value}`;
+            }
+            if (newCol.textContent === (`${keyWord04.value}`) && keyWord04.value) {
+              newCol.style.backgroundColor = `${colorPick04.value}`;
+            }
+  
+          } else {
+  
+            if (newCol.textContent.toUpperCase() === keyWord01.value.toUpperCase() && keyWord01.value) {
+              newCol.style.backgroundColor = `${colorPick01.value}`;
+            }
+            if (newCol.textContent.toUpperCase() === keyWord02.value.toUpperCase() && keyWord02.value) {
+              newCol.style.backgroundColor = `${colorPick02.value}`;
+            }
+            if (newCol.textContent.toUpperCase() === keyWord03.value.toUpperCase() && keyWord03.value) {
+              newCol.style.backgroundColor = `${colorPick03.value}`;
+            }
+            if (newCol.textContent.toUpperCase() === keyWord04.value.toUpperCase() && keyWord04.value) {
+              newCol.style.backgroundColor = `${colorPick04.value}`;
+            }
+          }
+          newRow.appendChild(newCol);
+        }   
+
+        tablaBody.appendChild(newRow);
+      }
 
     }
+
   }
 }
